@@ -26,10 +26,14 @@ public class User {
      @Past
      private LocalDate birthday ;
      
+     @OneToMany(mappedBy = "user")
+     @JsonIgnore
+     private List<Post> posts;
+     
      protected User() {
     	 
      }
-     
+
 	public User(Integer id, String name, LocalDate birthday) {
 		super();
 		Id = id;
@@ -53,6 +57,13 @@ public class User {
 	}
 	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
+	}
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 	@Override
 	public String toString() {
